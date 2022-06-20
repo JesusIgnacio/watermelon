@@ -40,7 +40,7 @@ public class WatermelonApplication {
             .formLogin()
                 .and()
             .sessionManagement()
-                .maximumSessions(1)
+                .maximumSessions(3)
 				.sessionRegistry(sessionRegistry())
 				.expiredUrl("/login");
 			return http.build();
@@ -56,14 +56,14 @@ public class WatermelonApplication {
 			UserDetails user = User.withDefaultPasswordEncoder()
 					.username("user")
 					.password("password")
-					.roles("USER")
+					.roles("ADMIN")
 					.build();
 			return new InMemoryUserDetailsManager(user);
 		}
 		
 	}
 
-	@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 15, redisNamespace = "WATERMELON")
+	@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 180, redisNamespace = "watermelon")
 	public class RedisConfig {
 
 		@Bean
