@@ -72,7 +72,6 @@ public class WatermelonApplication {
 			configuration.setHostName("yourHost");
 			configuration.setPassword("yourPassword");
 			configuration.setUsername("yourUsername");
-			//configuration.setPort(10811);
 			return new JedisConnectionFactory(configuration);
 		}
 
